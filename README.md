@@ -55,6 +55,8 @@ controlverse/
 
 ### Development
 
+**Important:** The backend server must be running for the frontend application to function correctly.
+
 1.  **Run the backend:**
     ```bash
     cd backend
