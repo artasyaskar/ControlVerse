@@ -1,0 +1,19 @@
+# Koyeb deployment manifest for the backend API
+name: controlverse
+services:
+  - name: backend
+    type: web
+    routes:
+      - path: /
+    ports:
+      - port: 8000
+        protocol: http
+    env:
+      # Set these in Koyeb -> Service -> Environment (or edit here for ephemeral testing)
+      - key: SUPABASE_URL
+        value: ${SUPABASE_URL}
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        value: ${SUPABASE_SERVICE_ROLE_KEY}
+    docker:
+      dockerfile: backend/Dockerfile
+      context: backend

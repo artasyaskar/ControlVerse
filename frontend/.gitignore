@@ -1,0 +1,27 @@
+# Frontend (Vite + React + TypeScript)
+node_modules
+.dist/
+dist/
+.vite/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Env and local configs
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Testing/coverage
+coverage/
+
+# OS/editor junk
+*.swp
+*.swo
+.idea/

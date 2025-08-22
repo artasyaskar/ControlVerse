@@ -7,7 +7,7 @@ ControlVerse is a real-time control systems simulator and explainer. It allows u
 -   **Frontend:** React, Vite, TypeScript, Tailwind CSS, shadcn/ui, Framer Motion, Plotly.js, React Three Fiber
 -   **Backend:** FastAPI, Uvicorn, Python 3.11
 -   **Database & Auth:** Supabase
--   **AI:** OpenAI (or mock)
+-   **AI:** Google Gemini (or mock)
 
 ## Project Structure
 
@@ -27,7 +27,7 @@ controlverse/
 -   Docker (for backend deployment)
 -   A Supabase account
 -   A Fly.io account
--   An OpenAI API key (optional)
+-   A Google Gemini API key (optional)
 
 ### Installation
 
@@ -50,7 +50,7 @@ controlverse/
     cd ../backend
     pip install -r requirements.txt
     cp .env.example .env
-    # Add your OpenAI API key to .env
+    # Add your Gemini API key and Supabase URL + Service Role Key to .env
     ```
 
 ### Development
@@ -87,7 +87,13 @@ controlverse/
 2.  Log in to Fly.io: `fly auth login`.
 3.  Launch the app: `fly launch --no-deploy`. This will create a `fly.toml` file.
 4.  Deploy the app: `fly deploy`.
-5.  Set secrets: `fly secrets set OPENAI_API_KEY=your-key`.
+5.  Set secrets:
+    ```bash
+    fly secrets set \
+      GEMINI_API_KEY=your-key \
+      SUPABASE_URL=your-supabase-url \
+      SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+    ```
 
 ## License
 
