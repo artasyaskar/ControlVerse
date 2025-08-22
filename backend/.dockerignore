@@ -1,0 +1,25 @@
+# Exclude files not needed in Docker/remote builds
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# VCS
+.git/
+.gitignore
+
+# Tests and local data
+/tests/
+/tmp/
+
+# Env files (never include secrets)
+.env
+.env.*
+!.env.example

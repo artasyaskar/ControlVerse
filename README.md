@@ -24,9 +24,7 @@ controlverse/
 
 -   Node.js and npm
 -   Python 3.11+ and pip
--   Docker (for backend deployment)
 -   A Supabase account
--   A Fly.io account
 -   A Google Gemini API key (optional)
 
 ### Installation
@@ -77,23 +75,31 @@ controlverse/
 2.  Set the root directory to `frontend`.
 3.  Configure the build command: `npm run build`.
 4.  Add your environment variables to the Vercel project settings:
-    -   `VITE_BACKEND_URL`: The URL of your deployed backend (e.g., `https://controlverse-backend.fly.dev`)
+    -   `VITE_BACKEND_URL`: The URL of your deployed backend (e.g., `https://your-service.up.railway.app`)
     -   `VITE_SUPABASE_URL`: Your Supabase project URL.
     -   `VITE_SUPABASE_ANON_KEY`: Your Supabase anon key.
 
-### Backend (Fly.io)
+### Backend (Railway)
 
-1.  Install the Fly.io CLI: `curl -L https://fly.io/install.sh | sh`
-2.  Log in to Fly.io: `fly auth login`.
-3.  Launch the app: `fly launch --no-deploy`. This will create a `fly.toml` file.
-4.  Deploy the app: `fly deploy`.
-5.  Set secrets:
-    ```bash
-    fly secrets set \
-      GEMINI_API_KEY=your-key \
-      SUPABASE_URL=your-supabase-url \
-      SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-    ```
+This repo includes `backend/Procfile` so Railway can run Uvicorn via Nixpacks/Buildpacks.
+
+1.  Create a Railway account and connect your GitHub repo.
+2.  New Project → Deploy from GitHub → select this repo.
+3.  Set the __Root Directory__ to `backend` (so Railway builds only the backend).
+4.  Railway auto-detects Python and the `Procfile`:
+    - Start command: `web: uvicorn main:app --host 0.0.0.0 --port ${PORT}`
+5.  Set environment variables in the Railway service:
+    - `SUPABASE_URL`
+    - `SUPABASE_SERVICE_ROLE_KEY`
+    - `GEMINI_API_KEY` (if using AI features)
+6.  Deploy. Railway assigns a public URL; copy it and set it in Vercel as `VITE_BACKEND_URL`.
+
+Notes:
+- Do not commit `.env` with secrets. Keep them local; set them in Railway.
+- CORS: if you restrict origins in `backend/main.py`, add your Vercel domain.
+
+Optional:
+- Docker is not required for Railway, but a `backend/Dockerfile` exists if you ever choose Docker-based hosting.
 
 ## License
 
