@@ -56,23 +56,24 @@ controlverse/
 **Important:** The backend server must be running for the frontend application to function correctly.
 
 1.  **Run the backend:**
-    ```bash
-# Navigate to backend directory
-cd backend
+   ```bash
+  # Navigate to backend directory
+  cd backend
 
-# Create a virtual environment
-python -m venv venv
+  # Create a virtual environment
+  python -m venv venv
 
-# Activate the virtual environment
-# On Windows:
-.\venv\Scripts\activate
-# On macOS/Linux:
-# source venv/bin/activate
+  # Activate the virtual environment
+  # On Windows:
+  .\venv\Scripts\activate
+  # On macOS/Linux:
+  # source venv/bin/activate
 
-# Install Python dependencies
-pip install -r requirements.txt
-# Main command to run the backend server
-python -m uvicorn main:app --reload    ```
+  # Install Python dependencies
+  pip install -r requirements.txt
+  # Main command to run the backend server
+  python -m uvicorn main:app --reload 
+  ```
 
 2.  **Run the frontend:**
     ```bash
