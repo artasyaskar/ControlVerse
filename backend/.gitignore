@@ -20,7 +20,6 @@ dist/
 
 # Env and secrets
 .env.*
-.env
 !.env.example
 
 # IDE/OS

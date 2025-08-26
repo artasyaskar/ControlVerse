@@ -2,13 +2,17 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from pathlib import Path
-from .api import routes
+from api.routes import router
 
 # Explicitly load env from backend/.env so running uvicorn from project root works
 _ENV_PATH = Path(__file__).resolve().parent / ".env"
 load_dotenv(dotenv_path=_ENV_PATH)
 
-app = FastAPI()
+app = FastAPI(title="ControlVerse API")
+
+@app.get("/", tags=["Root"])
+async def root():
+    return {"message": "Welcome to the ControlVerse API"}
 
 # CORS configuration
 origins = [
@@ -26,4 +30,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(routes.router)
+app.include_router(router)

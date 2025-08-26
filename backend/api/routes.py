@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException
-from ..simulation.models import SystemParameters, SimulationInput
-from ..simulation import simulator
-from ..utils.ai_helper import get_ai_explanation
-from ..utils.logging import log_session
-from ..utils.supabase_client import get_supabase
+from simulation.models import SystemParameters, SimulationInput
+from simulation import simulator
+from utils.ai_helper import get_ai_explanation
+from utils.logging import log_session
+from utils.supabase_client import get_supabase
 from typing import Optional
 
 router = APIRouter()
