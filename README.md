@@ -46,7 +46,20 @@ controlverse/
 3.  **Set up the backend:**
     ```bash
     cd ../backend
+    # Navigate to backend directory
+    # Create a virtual environment
+    python -m venv venv
+
+    # Activate the virtual environment
+    # On Windows:
+    .\venv\Scripts\activate
+    # On macOS/Linux:
+    # source venv/bin/activate
+
+    # Install Python dependencies
     pip install -r requirements.txt
+    # Main command to run the backend server
+    python -m uvicorn main:app --reload 
     cp .env.example .env
     # Add your Gemini API key and Supabase URL + Service Role Key to .env
     ```
